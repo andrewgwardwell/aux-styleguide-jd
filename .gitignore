@@ -1,0 +1,6 @@
+output/*
+tmp/*
+**/.DStore
+.DStore
+node_modules/*
+node_modules
