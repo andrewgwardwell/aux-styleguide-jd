@@ -1,0 +1,32 @@
+// Components
+//
+// Styleguide 2.0
+
+
+// Buttons
+//
+// Based on the bootstrap button this has been altered slightly to give us a good base toward our custom styles.
+//
+// btn-defualt - default
+// btn--large-sharp - large button with sharp border radius
+// btn--large-gradual - large button with gradual
+//
+// markup:
+//<a class="btn btn-default {$modifiers}" href="#" role="button">Link</a>
+//
+// Styleguide 2.1
+
+.btn{
+	color: #fff;
+	background: $midblue;
+	&.btn-lrg{
+		height: 65px;
+		padding: 10px;
+	}
+	&.btn--large-sharp{
+		border-radius: 10%;
+	}
+	&.btn--large-gradual{
+		border-radius: 10%;
+	}
+}
