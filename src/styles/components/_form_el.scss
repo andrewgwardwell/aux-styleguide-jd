@@ -1,0 +1,24 @@
+// Form Inputs
+//
+// Based on the bootstrap button this has been altered slightly to give us a good base toward our custom styles.
+//
+// markup:
+//<form>
+//  <div class="form-group">
+//    <label>Input</label>
+//    <input type="text" class="form-control" placeholder="Input">
+//  </div>
+//</form>
+//
+// Styleguide 3.3
+.form-group{
+	color: $grey__font;
+	label{
+		font-weight: 400;
+		padding-bottom: 2.5px;
+	}
+	input {
+		font-weight: 100;
+		border: 1px solid $grey__form;
+	}
+}

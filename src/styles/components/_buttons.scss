@@ -1,0 +1,68 @@
+// Buttons
+//
+// Based on the bootstrap button this has been altered slightly to give us a good base toward our custom styles.
+//
+// btn-xs - small button
+// btn-sm - small button
+// btn-lrg - large button
+// pale - pale button
+//
+// markup:
+//<a class="btn {$modifiers}" href="#" role="button">Link</a>
+//
+// Styleguide 3.1
+.btn{
+	color: #fff;
+	background: $midblue;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.pale{
+	background: $lightblue;
+	.curves{
+		background: $lightblue !important;
+	}
+}
+
+// Modal Buttons
+//
+// Based on the bootstrap button this has been altered slightly to give us a good base toward our custom styles.
+//
+// btn-xs - small button
+// btn-sm - small button
+// btn-lrg - large button
+// pale - pale button
+//
+// markup:
+//<a class="btn btn--modal {$modifiers}" href="#" role="button">
+// 	Link
+// 	<div class="curves left"></div>
+// 	<div class="curves right"></div>
+//</a>
+//
+// Styleguide 3.2
+.btn--modal{
+	border-radius: 0%;
+	z-index: 1;
+	position: relative;
+	.curves{
+		z-index: 0;
+		height: 105%;
+		width: 20px;
+		position: absolute;
+		border-radius: 50%;
+		background: $midblue;
+		top:-1px;
+		&.left{
+			left: -10px;
+		}
+		&.right{
+			right: -10px;
+		}
+	}
+}
+.pale{
+	.curves{
+		background: $lightblue;
+	}
+}

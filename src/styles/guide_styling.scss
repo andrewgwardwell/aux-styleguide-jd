@@ -1,4 +1,6 @@
-// This is where overrides go
+* {
+	box-sizing: border-box;
+}
 
 [class$='--darkblue']{
 	background: $darkblue;
@@ -34,37 +36,37 @@
 	background: $ow;
 }
 
-[class$='--darkblue--color']{
+[class$='--darkblue--color'] > *{
 	color: $darkblue;
 }
-[class$='--midblue--color']{
+[class$='--midblue--color'] > *{
 	color: $midblue;
 }
-[class$='--lightblue--color']{
+[class$='--lightblue--color'] > *{
 	color: $lightblue;
 }
-[class$='--owblue--color']{
+[class$='--owblue--color'] > *{
 	color: $owblue;
 }
-[class$='--darkgreen--color']{
+[class$='--darkgreen--color'] > *{
 	color: $darkgreen; 
 }
-[class$='--lightgreen--color']{
+[class$='--lightgreen--color'] > *{
 	color: $lightgreen; 
 }
-[class$='--owgreen--color']{
+[class$='--owgreen--color'] > *{
 	color: $owgreen;
 }
-[class$='--red--color']{
+[class$='--red--color'] > *{
 	color: $red;
 }
-[class$='--purple--color']{
+[class$='--purple--color'] > *{
 	color: $purple;
 }
-[class$='--tan--color']{
+[class$='--tan--color'] > *{
 	color: $tan;
 }
-[class$='--ow--color']{
+[class$='--ow--color'] > *{
 	color: $ow;
 }
 
@@ -86,10 +88,11 @@
 	}
 }
 
-// body{
-// 	p, h1, h2, h3, h4, h5, span, strong, em{
-// 		&.sg{
-// 			font-family: 'Lato', sans-serif !important;
-// 		}
-// 	}
-// }
+p, h1, h2, h3, h4, h5, span, strong, em, a, div, label{
+	font-family: 'Lato', sans-serif !important;
+}
+
+.menu-bar{
+	background: $drk-blue__menu;
+	padding: 20px;
+}

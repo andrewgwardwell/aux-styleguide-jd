@@ -12,6 +12,11 @@ var scssRoot = styleSourcePath + '/main.scss';
 // var bootRoot = 'src/styles/_bootstrap.scss';
 var overviewPath = styleSourcePath + '/README.md';
 
+gulp.task('static', function() {
+  return gulp.src(['src/fonts/**/*'])
+    .pipe(gulp.dest(outputPath + '/fonts'));
+});
+
 gulp.task('styleguide:generate', function() {
     return gulp.src(scssWild)
     .pipe(styleguide.generate({
@@ -23,6 +28,7 @@ gulp.task('styleguide:generate', function() {
     .pipe(gulp.dest(outputPath));
 });
 
+//working
 gulp.task('styleguide:applystyles', function() {
   return gulp.src(scssRoot)
     .pipe(sass({
@@ -34,10 +40,10 @@ gulp.task('styleguide:applystyles', function() {
 
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 
-gulp.task('watch', ['styleguide'], function() {
+gulp.task('watch', ['static','styleguide'], function() {
   // Start watching changes and update styleguide whenever changes are detected
   // Styleguide automatically detects existing server instance
-  gulp.watch(['*.scss'], ['styleguide']);
+  gulp.watch(scssWild, ['styleguide']);
 });
 
 
