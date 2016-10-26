@@ -1,7 +1,7 @@
 Example Pattern Library
 =======================
 
-Starter for the amazon style guide using the SC5 stylesguide package "[Janeiro Digital](http://janeirodigital.com)"
+Janeiro Digital SC5 stylesguide package "[Janeiro Digital](http://janeirodigital.com)"
 
 When you are creating an actual styleguide your team needs to agree on the semantics (naming, structure, coding style) of how you will contruct your project. Different ways may suit different projects and teams. Whatever your preferences and decisions are, we recommend that you document your approach in the overview chapter (this one) of your style guide so everyone in the team has a shared opinion on how the markup and styles are constructed in the project.
 
