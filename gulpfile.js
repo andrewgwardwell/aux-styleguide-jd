@@ -20,7 +20,7 @@ gulp.task('static', function() {
 gulp.task('styleguide:generate', function() {
     return gulp.src(scssWild)
     .pipe(styleguide.generate({
-        title: 'Amazon',
+        title: 'AUX',
         server: true,
         rootPath: outputPath,
         overviewPath: overviewPath
