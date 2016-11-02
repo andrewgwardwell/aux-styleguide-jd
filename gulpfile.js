@@ -1,16 +1,35 @@
 var gulp = require('gulp');
 var styleguide = require('sc5-styleguide');
 var sass = require('gulp-sass');
-// var concat = require('gulp-concat');
+var concat = require('gulp-concat');
+var filter = require('gulp-filter');
+var uglify = require('gulp-uglify');
+var usemin = require('gulp-usemin');
+var plumber = require('gulp-plumber'),
+    bower = require('gulp-bower'),
+    mainBowerFiles = require('main-bower-files');
 var outputPath = 'output';
 var sourcePath = 'src';
 // var jsRoot = sourcePath + '/js/*.*';
 // var htmlWild = sourcePath + '/**/*.html';
-var styleSourcePath = sourcePath + '/styles';
+var styleSourcePath = sourcePath + '/app/src/app/styles';
 var scssWild = styleSourcePath + '/**/*.scss';
 var scssRoot = styleSourcePath + '/main.scss';
 // var bootRoot = 'src/styles/_bootstrap.scss';
 var overviewPath = styleSourcePath + '/README.md';
+
+gulp.task('bower_deps', function() {
+  return gulp.src(mainBowerFiles({ paths: 'src/app', filter: /\.js/}))
+    // .pipe(uglify({outSourceMap: true}))
+    .pipe(plumber())
+    .pipe(concat('bower_deps.js'))
+    .pipe(gulp.dest(outputPath + '/app'));
+});
+
+gulp.task('bower', function() {
+  return bower({ cwd: '/Users/AWardwell/Sites/amazon_style/src/app' });
+});
+
 
 gulp.task('static', function() {
   return gulp.src(['src/fonts/**/*'])
@@ -23,7 +42,23 @@ gulp.task('styleguide:generate', function() {
         title: 'AUX',
         server: true,
         rootPath: outputPath,
-        overviewPath: overviewPath
+        overviewPath: overviewPath,
+        filesConfig: [
+        {
+          "name": "app",
+          "files": [
+            "app/src/app/index.module.js",
+            "app/src/app/directives/form/formEl.directive.js"
+          ],
+          template: "app/src/app/directives/form/formEl.html",
+        }
+        ],
+        additionalNgDependencies: ['ui.bootstrap', 'ui.select'],
+        afterBody: [
+            "app/bower_components/angular-bootstrap/ui-bootstrap.min.js",
+            "app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
+            "app/bower_components/angular-ui-select/index.js",
+        ],
       }))
     .pipe(gulp.dest(outputPath));
 });
@@ -40,75 +75,13 @@ gulp.task('styleguide:applystyles', function() {
 
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 
-gulp.task('watch', ['static','styleguide'], function() {
+gulp.task('app', function() {
+  return gulp.src(['src/app/**/**.*'])
+    .pipe(gulp.dest(outputPath + '/app'));
+});
+
+gulp.task('watch', ['static', 'app', 'bower_deps', 'styleguide'], function() {
   // Start watching changes and update styleguide whenever changes are detected
   // Styleguide automatically detects existing server instance
   gulp.watch(scssWild, ['styleguide']);
 });
-
-
-// gulp.task('html', function() {
-//     return gulp.src(htmlWild)
-//         .pipe(gulp.dest(outputPath));
-// });
-
-// gulp.task('scss', function() {
-//     return gulp.src(scssRoot)
-//         .pipe(sass())
-//         .pipe(gulp.dest(styleBuildPath));
-// });
-
-// gulp.task('js', function() {
-//     return gulp.src(jsRoot)
-//         .pipe(gulp.dest(jsBuildPath));
-// });
-
-// gulp.task('font', function() {
-//     return gulp.src(sourcePath + '/fonts/**/*.*')
-//         .pipe(gulp.dest(outputPath + '/fonts/'));
-// });
-
-// gulp.task('styleguide:generate', function() {
-//   return gulp.src(scssWild)
-//     .pipe(styleguide.generate({
-//         title: 'Amazon',
-//         server: true,
-//         rootPath: outputPath,
-//         overviewPath: overviewPath
-//       }))
-//     .pipe(gulp.dest(outputPath));
-// });
- 
-// gulp.task('styleguide:applystyles', function() {
-//   return gulp.src(scssRoot)
-//     .pipe(sass({
-//       errLogToConsole: true
-//     }))
-//     .pipe(styleguide.applyStyles())
-//     .pipe(gulp.dest(outputPath));
-// });
-  
-// gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
-
-// // Developer mode
-
-// gulp.task('watch', ['html', 'scss', 'styleguide'], function() {
-//     gulp.watch(htmlWild, ['html']);
-//     gulp.watch(scssWild, ['scss', 'styleguide']);
-//     console.log(
-//         '\nDeveloper mode!\n\nSC5 Styleguide available at http://localhost:3000/\n'
-//     );
-// });
-
-// // The basic build task
-
-// gulp.task('default', ['html', 'scss', 'staticStyleguide'], function() {
-//     console.log(
-//         '\nBuild complete!\n\nFresh build available in directory: ' +
-//         buildPath + '\n\nCheckout the build by commanding\n' +
-//         '(cd ' + buildPath + '; python -m SimpleHTTPServer)\n' +
-//         'and pointing yout browser at http://localhost:8000/\n' +
-//         'or http://localhost:8000/styleguide/ for the styleguide\n\n' +
-//         'Run gulp with "gulp dev" for developer mode and style guide!\n'
-//     );
-// });

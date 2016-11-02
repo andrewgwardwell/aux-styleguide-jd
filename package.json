@@ -10,9 +10,16 @@
   "license": "ISC",
   "dependencies": {
     "gulp": "^3.9.1",
+    "gulp-bower": "0.0.13",
     "gulp-cli": "^1.2.2",
     "gulp-concat": "^2.6.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-usemin": "^0.3.25",
+    "main-bower-files": "^2.13.1",
     "sc5-styleguide": "^1.2.0"
   }
 }
