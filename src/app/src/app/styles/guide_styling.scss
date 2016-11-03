@@ -89,10 +89,18 @@
 }
 
 p, h1, h2, h3, h4, h5, span, strong, em, a, div, label{
-	font-family: 'Lato', sans-serif !important;
+	font-family: 'Lato', sans-serif;
 }
-
-.menu-bar{
-	background: $drk-blue__menu;
-	padding: 20px;
+.container-fluid{
+	background: $lightblue;
+	text-align: center;
+	color: $grey__font;
+	.row{
+		background: #fff;
+		border: 1px dotted $grey__font;
+		line-height: 50px;
+	}
+	[class^="col"]{
+		border: 1px dotted $grey__font;
+	}
 }

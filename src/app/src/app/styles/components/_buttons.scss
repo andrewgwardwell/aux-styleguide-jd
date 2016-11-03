@@ -8,20 +8,19 @@
 // pale - pale button
 //
 // markup:
-//<a class="btn {$modifiers}" href="#" role="button">Link</a>
+//<a class="btn primary {$modifiers}" href="#" role="button">Link</a>
 //
-// Styleguide 3.1
+// Styleguide 4.1
 .btn{
-	color: #fff;
-	background: $midblue;
 	padding-left: 20px;
 	padding-right: 20px;
 }
+.primary{
+	color: #fff;
+	background: $midblue__menu;
+}
 .pale{
-	background: $lightblue;
-	.curves{
-		background: $lightblue !important;
-	}
+	background: $lightblue__menu;
 }
 
 // Modal Buttons
@@ -34,35 +33,18 @@
 // pale - pale button
 //
 // markup:
-//<a class="btn btn--modal {$modifiers}" href="#" role="button">
+//<a class="btn primary btn--modal {$modifiers}" href="#" role="button">
 // 	Link
-// 	<div class="curves left"></div>
-// 	<div class="curves right"></div>
 //</a>
 //
-// Styleguide 3.2
+// Styleguide 4.2
 .btn--modal{
-	border-radius: 0%;
+	border-top-left-radius: 20% 45%;
+    border-top-right-radius: 20% 45%;
+	border-bottom-left-radius: 20% 45%;
+    border-bottom-right-radius: 20% 45%;
 	z-index: 1;
 	position: relative;
-	.curves{
-		z-index: 0;
-		height: 105%;
-		width: 20px;
-		position: absolute;
-		border-radius: 50%;
-		background: $midblue;
-		top:-1px;
-		&.left{
-			left: -10px;
-		}
-		&.right{
-			right: -10px;
-		}
-	}
-}
-.pale{
-	.curves{
-		background: $lightblue;
-	}
+	padding-left: 3%;
+	padding-right: 3%;
 }

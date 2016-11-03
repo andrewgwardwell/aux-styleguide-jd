@@ -14,26 +14,27 @@
 							id: 1,
 							name: "ted",
 							level: 1,
-							parent: 0
+							parent: "North America"
 						}, {
 							id: 3,
 							name: "billy",
 							level: 1,
-							parent: 0
+							parent: "North America"
 						},
 						{
 							id: 4,
 							name: "Simon",
 							level: 2,
-							parent: 3
+							parent: "Europe"
 						},
 						{
 							id: 34,
 							name: "Stu",
 							level: 3,
-							parent: 4
+							parent: "South America"
 						}
 						];
+						$scope.groupBy = 'parent';
 						$scope.itemArray = opts;
 						$scope.selected = {
 							value: $scope.itemArray[0]
@@ -46,10 +47,9 @@
 				restrict: 'E',
 				replace: true,
 				scope: {
-					type: '@',
-					options: '='
+					type: '@'
 				},
-				templateUrl: 'app/directives/form/formEl.html',
+				templateUrl: 'app/directives/form/tpls/formEl.html',
 				controller: ctrl
 			};
 		});

@@ -1,20 +1,13 @@
-//From The App
-//
-//Styleguide 4.0
-
 // Form Inputs
 //
 // Based on the bootstrap button this has been altered slightly to give us a good base toward our custom styles.
 //
 // markup:
-// <form-el type="dropdown" options=''></form-el>
+// <form-el type="dropdown"></form-el>
 // 
-// form-el:
-// name: app
-// template: app/src/app/directives/formEl.directive.html
-// file: app/src/app/index.module.js, app/src/app/bower_components/angular-bootstrap/ui-bootstrap.min.js, app/src/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js, app/src/app/bower_components/angular-ui-select/index.js, app/src/app/directives/formEl.directive.js
 //
-// Styleguide 4.1
+// Styleguide 5.1
+
 .form-group{
 	color: $grey__font;
 	label{
@@ -25,16 +18,28 @@
 		font-weight: 100;
 		border: 1px solid $grey__form;
 	}
+
+	.hierarchy--2{
+	  margin-left:5px;
+	}
+
+	.hierarchy--3{
+	   margin-left:10px;
+	}
+}
+//UI overrides for bootstrap
+.dropdown{
+	.ui-select-bootstrap .ui-select-toggle > .caret {
+		border: none;
+	}
+	.ui-select-bootstrap .ui-select-match-text span.glyphicon{
+		top: -2px;
+		width: 20px;
+	}
+	.ui-select-bootstrap > .ui-select-choices,
+	.ui-select-bootstrap > .ui-select-no-choice{
+		width: 99%;
+		overflow: hidden;
+	}
 }
 
-.hierarchy--1{
-
-}
-
-.hierarchy--2{
-  margin-left:5px;
-}
-
-.hierarchy--3{
-   margin-left:10px;
-}
