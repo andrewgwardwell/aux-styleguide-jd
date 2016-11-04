@@ -49,7 +49,9 @@
 				scope: {
 					type: '@'
 				},
-				templateUrl: 'app/directives/form/tpls/formEl.html',
+				//Path to template had to change. @HELP
+				templateUrl: 'tpls/formEl.html',
+				// templateUrl: 'app/directives/form/tpls/formEl.html',
 				controller: ctrl
 			};
 		});

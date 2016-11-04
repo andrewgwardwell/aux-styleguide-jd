@@ -1,0 +1,1 @@
+exports.deps = ['ui.bootstrap', 'ui.select'];
