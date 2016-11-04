@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     bower = require('gulp-bower'),
     mainBowerFiles = require('main-bower-files'),
     rename = require('gulp-rename'),
+    //@HELP additional reqs for the config files
     add_deps = require('./gulp_extras/add_deps'),
     scripts_config = require('./gulp_extras/scripts_config'),
     deps = require('./gulp_extras/deps');
@@ -60,8 +61,8 @@ gulp.task('styleguide:generate', ['css'], function() {
         rootPath: outputPath,
         overviewPath: overviewPath,
         filesConfig: scripts_config.config,
-        //This means that we loose the benefit of the shadow DOM. @HELP
-        disableEncapsulation: true,
+        //This means that we loose the benefit of the shadow DOM. @HELP. Commenting this out will display issue clearly (directives broken and styles from app bleeding into the styleguide).
+        // disableEncapsulation: true,
         //Adding dependencies that the app needs here as well (seems to add them to the shadow dom, but js is not found). @HELP
         additionalNgDependencies: deps.deps,
         //This is the only place I have found to get the deps to the . @HELP
@@ -93,8 +94,8 @@ gulp.task('app', function() {
     .pipe(gulp.dest(outputPath + '/app'));
 });
 
-gulp.task('watch', ['static', 'template_files', 'app', 'styleguide'], function() {
-// gulp.task('watch', ['static', 'styleguide'], function() {
+// gulp.task('watch', ['static', 'template_files', 'app', 'styleguide'], function() {
+gulp.task('watch', ['static', 'styleguide'], function() {
   // Start watching changes and update styleguide whenever changes are detected
   // Styleguide automatically detects existing server instance
   gulp.watch(scssWild, ['styleguide']);
