@@ -25,7 +25,8 @@ var outputPath = 'output',
  bower = sourcePath + '/app/src/bower_components/',
  overviewPath = styleSourcePath + '/README.md';
 
-// gulp.task('bower_deps', function() {
+// @HELP I have attemped to pull all bower dependencies into the build (but I ran into an issue with bootstrap requiring additional files (.tpls.min.js)). That was an impass for me.
+// gulp.task('bower_deps, ['bower'],function() {
 //   return gulp.src(mainBowerFiles({ paths: 'src/app', filter: /\.js/}))
 //     // .pipe(uglify({outSourceMap: true}))
 //     .pipe(plumber())
