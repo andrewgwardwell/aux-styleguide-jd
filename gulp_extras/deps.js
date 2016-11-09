@@ -1,1 +1,1 @@
-exports.deps = ['ui.bootstrap', 'ui.select'];
+exports.deps = ['app'];

@@ -18,7 +18,7 @@ var gulp = require('gulp'),
 //helpers
 var outputPath = 'output',
  sourcePath = 'src',
- styleSourcePath = sourcePath + '/app/src/app/styles',
+ styleSourcePath = 'node_modules/app/src/app/styles',
  scssWild = styleSourcePath + '/**/*.scss',
  scssRoot = styleSourcePath + '/main.scss',
  allScss = styleSourcePath + '/all.scss',
@@ -45,37 +45,38 @@ gulp.task('static', function() {
     .pipe(gulp.dest(outputPath + '/fonts'));
 });
 
-//moving all the temps from the app into a tpl dump
-gulp.task('template_files', function() {
-  return gulp.src(['src/app/src/app/directives/**/tpls/*.html'])
-    .pipe(rename({dirname:''}))
-    .pipe(gulp.dest(outputPath + '/tpls'));
-});
+// //moving all the temps from the app into a tpl dump
+// gulp.task('template_files', function() {
+//   return gulp.src(['src/app/src/app/directives/**/tpls/*.html'])
+//     .pipe(rename({dirname:''}))
+//     .pipe(gulp.dest(outputPath + '/tpls'));
+// });
 
-gulp.task('styleguide:generate', ['css'], function() {
-//gulp.task('styleguide:generate', function() {
+// gulp.task('styleguide:generate', ['css'], function() {
+gulp.task('styleguide:generate', function() {
     return gulp.src(scssWild)
     .pipe(styleguide.generate({
         title: 'AUX',
         server: true,
         rootPath: outputPath,
         overviewPath: overviewPath,
-        filesConfig: scripts_config.config,
+        commonClass: 'sample-app'
+        // filesConfig: scripts_config.config,
         //This means that we loose the benefit of the shadow DOM. @HELP. Commenting this out will display issue clearly (directives broken and styles from app bleeding into the styleguide).
         // disableEncapsulation: true,
         //Adding dependencies that the app needs here as well (seems to add them to the shadow dom, but js is not found). @HELP
-        additionalNgDependencies: deps.deps,
+        // additionalNgDependencies: deps.deps,
         //This is the only place I have found to get the deps to the . @HELP
-        afterBody: add_deps.scripts.join('')
+        // extraHead: add_deps.scripts.join('')
       }))
     .pipe(gulp.dest(outputPath));
 });
 
-gulp.task('css', function() {
-  return gulp.src(bower + 'angular-ui-select/dist/select.min.css')
-    .pipe(rename({extname: ".scss"}))
-    .pipe(gulp.dest(styleSourcePath));
-});
+// gulp.task('css', function() {
+//   return gulp.src(bower + 'angular-ui-select/dist/select.min.css')
+//     .pipe(rename({extname: ".scss"}))
+//     .pipe(gulp.dest(styleSourcePath));
+// });
 
 //working
 gulp.task('styleguide:applystyles', function() {
@@ -89,10 +90,10 @@ gulp.task('styleguide:applystyles', function() {
 
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 
-gulp.task('app', function() {
-  return gulp.src(['src/app/**/**.*'])
-    .pipe(gulp.dest(outputPath + '/app'));
-});
+// gulp.task('app', function() {
+//   return gulp.src(['node_modules/app/**/**.*'])
+//     .pipe(gulp.dest(outputPath + '/app'));
+// });
 
 // gulp.task('watch', ['static', 'template_files', 'app', 'styleguide'], function() {
 gulp.task('watch', ['static', 'styleguide'], function() {

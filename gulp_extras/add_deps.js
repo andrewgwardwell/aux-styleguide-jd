@@ -1,3 +1,6 @@
-exports.scripts = ["<script type='text/javascript' src='app/bower_components/angular-bootstrap/ui-bootstrap.min.js'></script>",
-            "<script type='text/javascript' src='app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'></script>",
-            "<script type='text/javascript' src='app/bower_components/angular-ui-select/dist/select.min.js'></script>"];
+exports.scripts = [
+// "<script type='text/javascript' src='../node_modules/app/src/index.module.js'></script>",
+"<script type='text/javascript' src='../node_modules/app/node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js'></script>",
+"<script type='text/javascript' src='../node_modules/app/node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js'></script>",
+"<script type='text/javascript' src='../node_modules/app/node_modules/angular-ui-select/select.min.js'></script>"
+];
